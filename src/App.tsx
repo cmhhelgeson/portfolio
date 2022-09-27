@@ -1,8 +1,14 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {GraphQLSVG, GraphQLSVGModified } from './components/GraphQLSVG/GraphQLSVG';
+import { GroovySVGModified } from './components/GroovySVG/GroovySVG';
+import { FramerSVGModified, FramerSVG} from './components/FramerSVG';
 
 function App() {
+
+  const [isResizing, setIsResizing] = useState<boolean>(false);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -18,8 +24,23 @@ function App() {
         >
           Learn React
         </a>
-      </header>
-    </div>
+        <a href="https://graphql.org/">
+          <div style={{margin: "50px"}}>
+            <GraphQLSVGModified/>
+          </div>
+        </a>
+        <a href="https://groovy-lang.org/">
+          <div style={{margin: "50px"}}>
+            <GroovySVGModified/>
+          </div>
+        </a>
+        <a href="https://www.framer.com/motion/">
+          <div style={{margin: "50px"}}>
+            <FramerSVGModified/>
+          </div>
+        </a>
+        </header>
+      </div>
   );
 }
 
