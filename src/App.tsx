@@ -4,6 +4,8 @@ import './App.css';
 import {GraphQLSVG, GraphQLSVGModified } from './components/GraphQLSVG/GraphQLSVG';
 import { GroovySVGModified } from './components/GroovySVG/GroovySVG';
 import { FramerSVGModified, FramerSVG} from './components/FramerSVG';
+import { ReactSVGModified } from './components/ReactSVG/ReactSVG';
+import { CSVGModified } from './components/CSVG';
 
 function App() {
 
@@ -39,6 +41,15 @@ function App() {
             <FramerSVGModified/>
           </div>
         </a>
+        <a href="https://reactjs.org/">
+          <div style={{margin: "50px"}}>
+            <ReactSVGModified />
+          </div>
+        </a>
+        <a href="https://isocpp.org/"/>
+          <div>
+            <CSVGModified />
+          </div>
         </header>
       </div>
   );
