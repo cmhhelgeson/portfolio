@@ -5,15 +5,156 @@ import {GraphQLSVG, GraphQLSVGModified } from './components/GraphQLSVG/GraphQLSV
 import { GroovySVGModified } from './components/GroovySVG/GroovySVG';
 import { FramerSVGModified, FramerSVG} from './components/FramerSVG';
 import { ReactSVGModified } from './components/ReactSVG/ReactSVG';
-import { CSVGModified } from './components/CSVG';
+import { CSVGModified } from './components/CSVG'; 
+
+
+type ProjectImageParams = {
+  animationOn: boolean
+  imgSrc: string
+}
+
+const ProjectImage = ({animationOn = false, imgSrc = ""}: ProjectImageParams) => {
+  return (
+  <div className="project_image" style={{
+    "width": "100%", 
+    "height": "90%",
+    "flexGrow": 1,
+    "display": "flex",
+    "alignItems": "center",
+    "justifyContent": "center"
+  }}>
+    <div style={{
+      "width": "300px",
+      "height": "80%",
+      "borderRadius": "5px",
+      "border": "none",
+      "backgroundImage": `url(${imgSrc})`,
+      "zIndex": 9
+    }} />
+    
+  </div>
+  );
+}
+
+type ProjectContentParams =  {
+  projectNum: string
+  overrideProjectString?: string
+  numFontSize?: number,
+  projectFontSize?: number
+  projectFontSpacing?: number
+}
+
+const ProjectNumber = ({
+  projectNum, 
+  overrideProjectString, 
+  numFontSize, 
+  projectFontSize,
+  projectFontSpacing
+}: ProjectContentParams) => {
+  return (
+    <div className="project_number" style={{
+      "position": "relative",
+      "height": "90px"
+    }}>
+      <h1 className="number" style={{
+        "position": "absolute",
+        "fontSize": numFontSize ? `${numFontSize}px` : "190px",
+        "margin": "0px",
+        "left": "0px",
+        "top": "0px",
+        "opacity": 0.2,
+      }}>{projectNum}</h1>
+      <h1 className="project_string" style={{
+        "position": "absolute",
+        "left": "0px",
+        "letterSpacing": "0.5rem",
+        "opacity": "0.4"
+      }}>{overrideProjectString ? overrideProjectString : "PROJECT" }</h1>
+      
+    </div>
+  )
+
+}
+
+const ProjectContent = ({projectNum, overrideProjectString}: ProjectContentParams) => {
+  return (
+  <div className='project_content' style={{
+    "width": "100%",
+    "height": "100%",
+    "flexGrow": 1,
+    "padding": "6rem 2 rem"
+  }}>
+    <ProjectNumber 
+      projectNum={projectNum} 
+      overrideProjectString={overrideProjectString}/>
+  </div>
+  );
+}
+
+const IntroPage = () => {
+  return (
+  
+  <div className="content_container" style={{
+    "transform": "translate3d(0, 0, 0)",
+    "display": "flex",
+    "alignItems": "center"
+  }}>
+    {/* Change maxHeight here to change top and Bottom Height of content element */}
+    <div className="content" style={{
+      "opacity": 1, 
+      "height": "100vh",
+      "maxHeight": "800px",
+      "width": "80vw",
+      "paddingLeft": "140px",
+      "transition": "opacity 0.8s ease 0.8s",
+      "userSelect": "none",
+    }}> 
+      <div className="inner_area" style={{
+        "paddingLeft": "4em",
+        "height": "100%",
+        "display": "flex",
+        "alignItems": "center",
+        "justifyContent": "center"
+      }}>
+        <ProjectImage 
+          animationOn={false} 
+          imgSrc="https://uploads.codesandbox.io/uploads/user/18c9a4ff-aa49-4ab6-9c26-e1b1b21260f8/U5u--bibi-pace-Hi4fWKU2KSk-unsplash.jpg"
+        />
+        <ProjectContent projectNum='START'/>
+      </div>   
+    </div>
+  </div> 
+  );
+}
+
 
 function App() {
 
   const [isResizing, setIsResizing] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(0);
 
   return (
     <div className="App">
-      <header className="App-header">
+      <div className="projects" style={{
+        "width": "auto",
+        "height": "100vh",
+        "overflow": "hidden",
+        "position": "relative",
+        "display": "flex",
+        "alignItems": "center"
+      }}>
+        <IntroPage />
+
+      </div>
+
+      
+    </div>
+  );
+}
+
+export default App;
+
+/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
@@ -50,9 +191,4 @@ function App() {
           <div>
             <CSVGModified />
           </div>
-        </header>
-      </div>
-  );
-}
-
-export default App;
+        </header> */

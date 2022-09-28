@@ -1,0 +1,33 @@
+[
+    {
+        "id": 1,
+        "title": "Welcome",
+        "text": "",
+        "hidden": false
+    },
+    {
+        "id": 2,
+        "title": "About Me:",
+        "text": 
+            "I'm a recent Johns Hopkins Graduate with professional experience in Front-End React Development, Backend Development with Java Spring/Groovy/SQL, and cybersecurity research. For three years, I've been working to learn leading technologies and perfect my understanding of foundational algorithms and software engineering practicesAs a developer with experience working under both AGILE and SCRUM frameworks, I can be counted on to adapt to any work environment, contribute collaboratively, and be a pervasive promoter of my team's ideas.",
+        "hidden": false
+    },
+    {
+        "id": 3,
+        "title": "Experienced with: ", 
+        "text": "",
+        "hidden": false
+    }, 
+    {
+        "id": 4,
+        "title": "Project 1:",
+        "text": "Coming soon",
+        "hidden": true
+    }, 
+    {
+        "id": 5, 
+        "title": "Project 2",
+        "text": "Coming soon", 
+        "hidden": true
+    }
+]
