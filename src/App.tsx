@@ -81,10 +81,39 @@ const ProjectNumber = ({
 
 }
 
-const ProjectTitle = (text: string) => {
+type ProjectTitleParams = {
+  title: string,
+  color?: string,
+  opacity?: string
+}
+
+const ProjectTitle = ({title, color, opacity}: ProjectTitleParams) => {
+
+  const text = title;
+  return (<h2 style={{
+      "fontSize": "44px",
+      "margin": "2rem 0px",
+      "position": "relative",
+      "lineHeight": "1.2rem",
+      "color": color ? color : "black"
+    }}>{text}</h2>
+  );
+}
+
+
+type ProjectParagraphParams = {
+  text: string,
+  color?: string, 
+  opacity?: string
+}
+const ProjectParagraph = ({text, color, opacity}: ProjectParagraphParams) => {
   return (
-    <h2></h2>
-  )
+    <p style={{
+      "color": color ? color : "black",
+      "opacity": opacity ? opacity : 1
+    }}>{text}
+    </p>
+  );
 
 }
 
@@ -101,7 +130,6 @@ const ProjectContent = ({
     "height": "100%",
     "flexGrow": 1,
     "padding": "6rem 2 rem",
-    "display": "flex",
   }}>
     <ProjectNumber 
       projectNum={projectNum} 
@@ -109,7 +137,8 @@ const ProjectContent = ({
       numFontSize={numFontSize}
       projectFontSize={projectFontSize}
       projectFontSpacing={projectFontSpacing}/>
-    <ProjectTitle text="Intro Text" />
+    <ProjectTitle title="Intro"/>
+    <ProjectParagraph text="sfhsfhdsufdsf sdfsd" />
 
   </div>
   );
