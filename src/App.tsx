@@ -54,7 +54,10 @@ const ProjectNumber = ({
   return (
     <div className="project_number" style={{
       "position": "relative",
-      "height": "90px"
+      "height": "90px",
+      "width": "292px",
+      "display": "flex"
+
     }}>
       <h1 className="number" style={{
         "position": "absolute",
@@ -63,12 +66,14 @@ const ProjectNumber = ({
         "left": "0px",
         "top": "0px",
         "opacity": 0.2,
+        "justifyContent": "center",
       }}>{projectNum}</h1>
       <h1 className="project_string" style={{
         "position": "absolute",
         "left": "0px",
-        "letterSpacing": "0.5rem",
-        "opacity": "0.4"
+        "fontSize": projectFontSize ? projectFontSize : "20px",
+        "letterSpacing": projectFontSpacing ? `${projectFontSpacing}rem` : "0.5rem",
+        "opacity": "0.4",
       }}>{overrideProjectString ? overrideProjectString : "PROJECT" }</h1>
       
     </div>
@@ -76,17 +81,91 @@ const ProjectNumber = ({
 
 }
 
-const ProjectContent = ({projectNum, overrideProjectString}: ProjectContentParams) => {
+const ProjectTitle = (text: string) => {
+  return (
+    <h2></h2>
+  )
+
+}
+
+const ProjectContent = ({
+  projectNum, 
+  overrideProjectString, 
+  numFontSize, 
+  projectFontSize, 
+  projectFontSpacing
+}: ProjectContentParams) => {
   return (
   <div className='project_content' style={{
     "width": "100%",
     "height": "100%",
     "flexGrow": 1,
-    "padding": "6rem 2 rem"
+    "padding": "6rem 2 rem",
+    "display": "flex",
   }}>
     <ProjectNumber 
       projectNum={projectNum} 
-      overrideProjectString={overrideProjectString}/>
+      overrideProjectString={overrideProjectString}
+      numFontSize={numFontSize}
+      projectFontSize={projectFontSize}
+      projectFontSpacing={projectFontSpacing}/>
+    <ProjectTitle text="Intro Text" />
+
+  </div>
+  );
+}
+
+const ExperienceProjectContent = ({
+  projectNum, 
+  overrideProjectString, 
+  numFontSize, 
+  projectFontSize, 
+  projectFontSpacing
+}: ProjectContentParams) => {
+  return (
+    <div className='project_content' style={{
+      "width": "100%",
+      "height": "100%",
+      "flexGrow": 1,
+      "padding": "6rem 2 rem",
+      "display": "flex",
+      "flexDirection": "column",
+      "justifyContent": "center"
+    }}>
+      <ProjectNumber 
+        projectNum={projectNum} 
+        overrideProjectString={overrideProjectString}
+        numFontSize={numFontSize}
+        projectFontSize={projectFontSize}
+        projectFontSpacing={projectFontSpacing}
+    />
+      <div className="experience_with">
+      <a href="https://graphql.org/">
+          <div style={{margin: "50px"}}>
+            <GraphQLSVGModified/>
+          </div>
+        </a>
+        <a href="https://groovy-lang.org/">
+          <div style={{margin: "50px"}}>
+            <GroovySVGModified/>
+          </div>
+        </a>
+        <a href="https://www.framer.com/motion/">
+          <div style={{margin: "50px"}}>
+            <FramerSVGModified/>
+          </div>
+        </a>
+        <a href="https://reactjs.org/">
+          <div style={{margin: "50px"}}>
+            <ReactSVGModified />
+          </div>
+        </a>
+        <a href="https://isocpp.org/">
+          <div>
+            <CSVGModified />
+          </div>
+        </a>
+      </div>
   </div>
   );
 }
@@ -120,9 +199,52 @@ const IntroPage = () => {
           animationOn={false} 
           imgSrc="https://uploads.codesandbox.io/uploads/user/18c9a4ff-aa49-4ab6-9c26-e1b1b21260f8/U5u--bibi-pace-Hi4fWKU2KSk-unsplash.jpg"
         />
-        <ProjectContent projectNum='START'/>
+        <ProjectContent 
+          projectNum='WELCOME' 
+          overrideProjectString='PAGE'
+          numFontSize={50}
+          projectFontSize={60}/>
       </div>   
     </div>
+  </div> 
+  );
+}
+
+const ExperiencePage = () => {
+  return (
+    <div className="content_container" style={{
+      "transform": "translate3d(0, 0, 0)",
+      "display": "flex",
+      "alignItems": "center"
+    }}>
+      {/* Change maxHeight here to change top and Bottom Height of content element */}
+      <div className="content" style={{
+        "opacity": 1, 
+        "height": "100vh",
+        "maxHeight": "800px",
+        "width": "80vw",
+        "paddingLeft": "140px",
+        "transition": "opacity 0.8s ease 0.8s",
+        "userSelect": "none",
+      }}> 
+        <div className="inner_area" style={{
+          "paddingLeft": "4em",
+          "height": "100%",
+          "display": "flex",
+          "alignItems": "center",
+          "justifyContent": "center"
+        }}>
+          <ProjectImage 
+            animationOn={false} 
+            imgSrc="https://uploads.codesandbox.io/uploads/user/18c9a4ff-aa49-4ab6-9c26-e1b1b21260f8/U5u--bibi-pace-Hi4fWKU2KSk-unsplash.jpg"
+          />
+          <ExperienceProjectContent 
+            projectNum='EXPERIENCE' 
+            overrideProjectString='WTIH'
+            numFontSize={50}
+            projectFontSize={60}/>
+        </div>   
+      </div>
   </div> 
   );
 }
@@ -145,9 +267,7 @@ function App() {
       }}>
         <IntroPage />
 
-      </div>
-
-      
+      </div>    
     </div>
   );
 }
