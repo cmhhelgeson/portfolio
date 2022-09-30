@@ -1,0 +1,11 @@
+.project_paragraph {
+    font-size: 22px;
+}
+
+
+@media (max-width: 1180px) {
+    .project_paragraph {
+        font-size: 16px;
+
+    }
+}

@@ -5,13 +5,23 @@ import {ProjectTitle} from "../ProjectTitle"
 import {ProjectParagraph} from "../ProjectParagraph"
 
 
+
+export type LinkInfo = {
+    isLink?: true,
+    linkSource: string,
+}
+
 export type ProjectContentParams = {
     projectNum: string
+    text: string
     overrideProjectString?: string
     numFontSize?: number
     projectFontSize?: number
-    projectFontSpacing?: number
+    projectFontSpacing?: number,
+    linkInfo?: LinkInfo
 }
+
+export type ProjectNumberParams = Omit<ProjectContentParams, "text">
 
 
 export const ProjectNumber = ({
@@ -19,8 +29,8 @@ export const ProjectNumber = ({
     overrideProjectString, 
     numFontSize, 
     projectFontSize,
-    projectFontSpacing
-  }: ProjectContentParams) => {
+    projectFontSpacing,
+  }: ProjectNumberParams) => {
     return (
       <div className={styles.project_number}>
         <h1 className={styles.number} style={{
@@ -29,7 +39,7 @@ export const ProjectNumber = ({
             {projectNum}
         </h1>
         <h1 className="project_string" style={{
-          "fontSize": projectFontSize ? projectFontSize : "20px",
+          "fontSize": projectFontSize ? `${projectFontSize}px` : "20px",
           "letterSpacing": projectFontSpacing ? `${projectFontSpacing}rem` : "0.5rem",
         }}>
             {overrideProjectString ? overrideProjectString : "PROJECT" }
@@ -38,23 +48,29 @@ export const ProjectNumber = ({
     )
 }
 
+
+
 export const ProjectContent = ({
     projectNum, 
+    text,
     overrideProjectString, 
     numFontSize, 
     projectFontSize, 
-    projectFontSpacing
+    projectFontSpacing,
+    linkInfo,
   }: ProjectContentParams) => {
     return (
     <div className={styles.project_content}>
+    
       <ProjectNumber 
         projectNum={projectNum} 
         overrideProjectString={overrideProjectString}
         numFontSize={numFontSize}
         projectFontSize={projectFontSize}
         projectFontSpacing={projectFontSpacing}/>
-      <ProjectTitle title="Intro"/>
-      <ProjectParagraph text="sfhsfhdsufdsf sdfsd" />
+      <ProjectTitle title="Introduction" color="white" opacity="0.4"/>
+      <ProjectParagraph text={text}/>
+      {linkInfo ? <h3>Link</h3> : null}
   
     </div>
     );

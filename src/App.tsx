@@ -1,17 +1,19 @@
-import React, {useEffect, useState} from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
-import {GraphQLSVG, GraphQLSVGModified } from './components/GraphQLSVG/GraphQLSVG';
-import { GroovySVGModified } from './components/GroovySVG/GroovySVG';
-import { FramerSVGModified, FramerSVG} from './components/FramerSVG';
-import { ReactSVGModified } from './components/ReactSVG/ReactSVG';
-import { CSVGModified } from './components/CSVG'; 
-import { AnimatePresence, motion} from 'framer-motion';
-import { ProjectImage } from './components/ProjectImage';
-import { ProjectContent, ProjectContentParams, ProjectNumber} from './components/ProjectContent/';
+import { AnimatePresence} from 'framer-motion';
 import {IntroPage} from "./components/pages/IntroPage"
 
+import { IntroPageProps } from './components/pages/IntroPage';
 
+import backgroundImageOne from "./imgs/me.jpg"
+
+
+const pageInfo: IntroPageProps[] = [
+  {
+    "key": 0, 
+    "imgSrc": "../../"
+  }
+]
 
 
 
@@ -111,19 +113,40 @@ import {IntroPage} from "./components/pages/IntroPage"
 } */
 
 
+const variants = {
+  enter: (direction: number) => {
+    return {
+      x: direction > 0 ? 1000: -1000,
+      opacity: 0,
+    };
+  }, 
+  center: {
+    zIndex: 1,
+    x: 0,
+    opacity: 1,
+  },
+  exit: (direction: number) => {
+    return {
+      zIndex: 0,
+      x: direction < 0 ? 1000 : -1000,
+    }
+  }
+}
+
+
 function App() {
 
-  const [isResizing, setIsResizing] = useState<boolean>(false);
   const [page, setPage] = useState<number>(0);
+  const [direction, setDirection] = useState<number>(0);
 
   return (
     <div className="App">
+      <header>
+
+      </header>
       <div className="projects">
         <AnimatePresence>
-          {
-            page === 0 ? <IntroPage /> : 
-            null
-          }
+          <IntroPage />
         </AnimatePresence>
         <button onClick={() => setPage(1)} />
         <AnimatePresence />

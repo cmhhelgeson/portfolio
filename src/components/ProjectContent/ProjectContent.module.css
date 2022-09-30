@@ -3,23 +3,27 @@
     height: 100%;
     flex-grow: 1;
     padding: 6rem 2 rem;
+    display: flex;
+    flex-direction: column;
+
 }
 
 .project_number {
     position: relative;
     height: 90px;
-    width: 292px;
+    width: 100%;
     display: flex;
+    justify-content: center;
 }
 
 .number {
     position: absolute;
     font-size: 190px;
+    width: 100%;
     margin: 0px;
     left: 0px;
     top: 0px;
     opacity: 0.2;
-    justify-content: center;
 }
 
 .project_string {
