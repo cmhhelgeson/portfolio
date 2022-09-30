@@ -16,26 +16,47 @@ export type IntroPageProps = {
   text: string,
   projectNum: string,
   imgSrc: string,
+  titleText?: string,
   overrideProjectString?: string,
+  variants: any
+  custom: number, 
+  initial: string,
+  animate: any,
+  exit: any
 }
 
-export const IntroPage = ({key, text, projectNum, imgSrc, overrideProjectString}: IntroPageProps) => {
+export const IntroPage = ({
+  key, 
+  text, 
+  projectNum, 
+  imgSrc, 
+  overrideProjectString, 
+  variants,
+  initial, 
+  custom,
+  animate,
+  exit
+}: IntroPageProps) => {
 
   return (
   
   <motion.div className={styles.content_container} 
     key={key}
-    exit={{y: [0, -650], opacity: [1, 0]}}
+    variants={variants}
+    initial={initial}
+    animate={animate}
+    custom={custom}
+    exit={exit}
+    transition={{
+      x: { type: "spring", stiffness: 300, damping: 30 },
+      opacity: { duration: 0.2 }
+    }}
   >
-    <motion.div className={styles.content} 
-        style={{"transition": "opacity 0.8s ease 0.8s"}}
-        transition={{duration: 2}}
-        exit={{opacity: 0}}
-    > 
+    <motion.div className={styles.content} > 
       <div className={styles.inner_area}>
         <ProjectImage 
           animationOn={false} 
-          imgSrc={backgroundImage}
+          imgSrc={imgSrc}
         />
         <ProjectContent 
           projectNum={projectNum} 
@@ -48,3 +69,7 @@ export const IntroPage = ({key, text, projectNum, imgSrc, overrideProjectString}
   </motion.div> 
   );
 }
+
+/*style={{"transition": "opacity 0.8s ease 0.8s"}}
+        transition={{duration: 2}}
+        exit={{opacity: 0}} */

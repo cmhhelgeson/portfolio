@@ -6,16 +6,100 @@ import {IntroPage} from "./components/pages/IntroPage"
 import { IntroPageProps } from './components/pages/IntroPage';
 
 import backgroundImageOne from "./imgs/me.jpg"
+import backgroundImageTwo from "./imgs/code.webp"
+import backgroundImageThree from "./imgs/leaves.webp"
 
 
-const pageInfo: IntroPageProps[] = [
+const pageInfo: Omit<IntroPageProps, 
+  "variants" | 
+  "custom" | 
+  "initial" | 
+  "exit" | 
+  "transition" | 
+  "animate">[] = [
   {
-    "key": 0, 
-    "imgSrc": "../../"
+    key : 0, 
+    imgSrc: backgroundImageOne, 
+    projectNum: "Welcome",
+    overrideProjectString: "Page",
+    titleText: "Introduction",
+    text: "I'm a recent Johns Hopkins Graduate with professional experience in Front-End React Development, Backend Development with Java Spring/Groovy/SQL, and cybersecurity research. For three years, I've been working to learn leading technologies and perfect my understanding of foundational algorithms and software engineering practicesAs a developer with experience working under both AGILE and SCRUM frameworks, I can be counted on to adapt to any work environment, contribute collaboratively, and be a pervasive promoter of my team's ideas.",
+  }, 
+  {
+    key: 1, 
+    imgSrc: backgroundImageTwo, 
+    projectNum: "Experience",
+    overrideProjectString: "With", 
+    text: "Current Experience includes: "
+  }, 
+  {
+    key: 2,
+    imgSrc: backgroundImageThree,
+    projectNum: "01", 
+    text: "This project demonstrates multiple fundamental algorithms in rudimentary 3d rendering, including depth buffers, phong lighting, goraud shading etc..."
   }
 ]
 
 
+
+
+
+
+
+const variants = {
+  enter: (direction: number) => {
+    return {
+      x: direction > 0 ? 1000: -1000,
+      opacity: 0,
+    };
+  }, 
+  center: {
+    zIndex: 1,
+    x: 0,
+    opacity: 1,
+  },
+  exit: (direction: number) => {
+    return {
+      zIndex: 0,
+      x: direction < 0 ? 1000 : -1000,
+    }
+  }
+}
+
+
+function App() {
+
+  const [page, setPage] = useState<number>(0);
+  const [direction, setDirection] = useState<number>(0);
+
+  return (
+    <div className="App">
+      <header>
+
+      </header>
+      <div className="projects">
+        <AnimatePresence>
+          {<IntroPage 
+            key={page} 
+            imgSrc={pageInfo[page].imgSrc}
+            text={pageInfo[page].text}
+            projectNum={pageInfo[page].projectNum}
+            custom={direction}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            variants={variants}
+        />}
+        </AnimatePresence>
+      </div>  
+      <h1>{page}</h1>
+      {page < 2 ? <div className="next_arrow" onClick={() => setPage(page + 1)}/> : null}
+      {page > 0 ? <div className="prev_arrow" onClick={() => setPage(page - 1)}/> : null}
+    </div>
+  );
+}
+
+export default App;
 
 
 /* const ExperienceProjectContent = ({
@@ -111,49 +195,4 @@ const pageInfo: IntroPageProps[] = [
   </div> 
   );
 } */
-
-
-const variants = {
-  enter: (direction: number) => {
-    return {
-      x: direction > 0 ? 1000: -1000,
-      opacity: 0,
-    };
-  }, 
-  center: {
-    zIndex: 1,
-    x: 0,
-    opacity: 1,
-  },
-  exit: (direction: number) => {
-    return {
-      zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
-    }
-  }
-}
-
-
-function App() {
-
-  const [page, setPage] = useState<number>(0);
-  const [direction, setDirection] = useState<number>(0);
-
-  return (
-    <div className="App">
-      <header>
-
-      </header>
-      <div className="projects">
-        <AnimatePresence>
-          <IntroPage />
-        </AnimatePresence>
-        <button onClick={() => setPage(1)} />
-        <AnimatePresence />
-      </div>    
-    </div>
-  );
-}
-
-export default App;
 
