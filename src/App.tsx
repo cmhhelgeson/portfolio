@@ -50,7 +50,7 @@ const variants = {
   enter: (direction: number) => {
     return {
       x: direction > 0 ? 1000: -1000,
-      opacity: 0,
+      opacity: 1,
     };
   }, 
   center: {
@@ -61,7 +61,8 @@ const variants = {
   exit: (direction: number) => {
     return {
       zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
+      x: direction < 0 ? 1000 : 0,
+      opacity: 0,
     }
   }
 }
@@ -69,8 +70,11 @@ const variants = {
 
 function App() {
 
-  const [page, setPage] = useState<number>(0);
-  const [direction, setDirection] = useState<number>(0);
+  const [[page, direction], setPage] = useState<[number, number]>([0, 0]);
+
+  const paginate = (newDirection: number) => {
+    setPage([page + newDirection, 1]);
+  }
 
   return (
     <div className="App">
@@ -78,7 +82,7 @@ function App() {
 
       </header>
       <div className="projects">
-        <AnimatePresence>
+        <AnimatePresence initial={false} custom={direction}>
           {<IntroPage 
             key={page} 
             imgSrc={pageInfo[page].imgSrc}
@@ -93,8 +97,8 @@ function App() {
         </AnimatePresence>
       </div>  
       <h1>{page}</h1>
-      {page < 2 ? <div className="next_arrow" onClick={() => setPage(page + 1)}/> : null}
-      {page > 0 ? <div className="prev_arrow" onClick={() => setPage(page - 1)}/> : null}
+      {page < 2 ? <div className="next_arrow" onClick={() => paginate(1)}/> : null}
+      {page > 0 ? <div className="prev_arrow" onClick={() => paginate(-1)}/> : null}
     </div>
   );
 }

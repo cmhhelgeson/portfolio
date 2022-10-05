@@ -48,7 +48,7 @@ export const IntroPage = ({
     custom={custom}
     exit={exit}
     transition={{
-      x: { type: "spring", stiffness: 300, damping: 30 },
+      x: { type: "spring", stiffness: 300, damping: 30, duration: 0.2 },
       opacity: { duration: 0.2 }
     }}
   >
