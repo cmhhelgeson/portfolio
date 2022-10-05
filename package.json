@@ -1,4 +1,5 @@
 {
+  "homepage": "http://cmhhelgeson.github.io/portfolio",
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
@@ -11,6 +12,7 @@
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "framer-motion": "^7.4.0",
+    "gh-pages": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-draggable-slider": "^0.1.6",

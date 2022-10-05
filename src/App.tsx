@@ -45,7 +45,7 @@ const pageInfo: Omit<IntroPageProps,
     imgSrc: backgroundImageThree,
     projectNum: "01", 
     titleText: "",
-    text: "This project demonstrates multiple fundamental algorithms in rudimentary 3d rendering, including depth buffers, phong lighting, goraud shading etc..."
+    text: "Coming soon"
   }
 ]
 
@@ -89,6 +89,9 @@ function App() {
 
   return (
     <div className="App">
+      <header style={{marginBottom: "0px"}}>
+      <h1 style={{marginBottom: "0px"}}>Christian Helgeson Portfolio</h1>
+      </header>
 
       <div className="projects">
         <AnimatePresence initial={false} custom={direction}>

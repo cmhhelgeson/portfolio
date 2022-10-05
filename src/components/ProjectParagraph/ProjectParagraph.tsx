@@ -17,7 +17,6 @@ export const ProjectParagraph = ({
     fontSize,
     bold
 }: ProjectParagraphParams) => {
-    const t = text.split("(");
     return (
         <p className={styles.project_paragraph}
             style={{
@@ -27,8 +26,7 @@ export const ProjectParagraph = ({
                 "padding": "10px"
             }}
         >
-            {bold ? <b>{t[0]}</b> : t[0]}
-            {t[1]}
+            {text}
         </p>
     )
 }
