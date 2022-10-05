@@ -6,17 +6,13 @@ import {motion} from "framer-motion"
 import { ProjectImage } from "../../ProjectImage"
 import { ProjectContent } from "../../ProjectContent"
 
-import backgroundImage from "../../../imgs/me.jpg"
-
-const IntroText = "I'm a recent Johns Hopkins Graduate with professional experience in Front-End React Development, Backend Development with Java Spring/Groovy/SQL, and cybersecurity research. For three years, I've been working to learn leading technologies and perfect my understanding of foundational algorithms and software engineering practicesAs a developer with experience working under both AGILE and SCRUM frameworks, I can be counted on to adapt to any work environment, contribute collaboratively, and be a pervasive promoter of my team's ideas."
-
 
 export type IntroPageProps = {
   key: number,
   text: string,
   projectNum: string,
   imgSrc: string,
-  titleText?: string,
+  titleText: string,
   overrideProjectString?: string,
   variants: any
   custom: number, 
@@ -28,6 +24,7 @@ export type IntroPageProps = {
 export const IntroPage = ({
   key, 
   text, 
+  titleText,
   projectNum, 
   imgSrc, 
   overrideProjectString, 
@@ -63,7 +60,8 @@ export const IntroPage = ({
           overrideProjectString={overrideProjectString}
           numFontSize={50}
           projectFontSize={60}
-          text={text}/>
+          text={text}
+          titleText={titleText}/>
       </div>   
     </motion.div>
   </motion.div> 

@@ -22,9 +22,16 @@ export const GroovySVG = () => {
 }
 
 
+
+type GroovySVGModifiedProps = {
+  marginLeft?: number,
+  marginTop?: number,
+  
+}
 //Path 1: Outlines
 //Path 2: Star Fill
-export const GroovySVGModified = () => {
+export const GroovySVGModified = ({marginLeft, marginTop}: GroovySVGModifiedProps) => {
+
   const [toggle, setToggle] = useState<boolean>(false);
 
   //TODO: Figure out how to prevent animations on browser scaling
@@ -32,9 +39,14 @@ export const GroovySVGModified = () => {
 
   return (
     <div style={{
-      "backgroundColor": "white",
-      "width": "135px"
-    }}>
+      "width": "300px", 
+      "height": "150px", 
+      "display": "block", 
+      "textAlign": "center",
+       "margin": "auto",
+       "position": "absolute",
+       "marginTop": marginTop ? `${marginTop}px`: "25px",
+       "marginLeft": marginLeft ? `${marginLeft}px` : "0px"}} onMouseOut={() => setToggle(false)}  onMouseOver={() => setToggle(true)}>
     <motion.svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" 
     initial={{scale: 3, fill: TrendyBlue}}
     animate={!toggle  ? {}: {

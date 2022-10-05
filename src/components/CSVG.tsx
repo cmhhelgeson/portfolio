@@ -4,6 +4,7 @@ import {motion} from "framer-motion"
 
 export const CSVG = () => {
   return (
+    
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="2222"
@@ -43,13 +44,22 @@ export const CSVGModified = () => {
     const [toggle, setToggle] = useState<boolean>(false);
 
     return (
+      <div style={{
+        "width": "300px", 
+        "height": "150px", 
+        "display": "block", 
+        "textAlign": "center",
+         "margin": "auto",
+         "position": "absolute",
+         "marginTop": "-75px",
+         "marginLeft": "875px"}} >
         <motion.svg
           xmlns="http://www.w3.org/2000/svg"
           width="222"
           height="250"
           viewBox="0 0 256 288"
-          initial={{scale: 0.6, x: 2}}
-          animate={!toggle ? {} : {scale: 0.65}}
+          initial={{scale: 0.4, x: 2}}
+          animate={!toggle ? {} : {scale: 0.45}}
           onMouseEnter={() => setToggle(true)}
           onMouseLeave={() => setToggle(false)}
         >
@@ -72,7 +82,7 @@ export const CSVGModified = () => {
           <motion.path
             fill="#FFF"
             d="M248.728 148.661h-9.722v9.724h-9.724v-9.724h-9.721v-9.721h9.721v-9.722h9.724v9.722h9.722v9.721m-35.475 0h-9.721v9.724h-9.722v-9.724h-9.722v-9.721h9.722v-9.722h9.722v9.722h9.721v9.721"
-            animate={!toggle ? {}: {pathLength: [1, 0], opacity: [1, 0]}}
+            animate={!toggle ? {} : {pathLength: [1, 0], opacity: [1, 0]}}
             transition={{repeat: Infinity, repeatDelay: 0.2, repeatType: "mirror"}}
           />
           <motion.path
@@ -80,5 +90,6 @@ export const CSVGModified = () => {
             d="M164.619 164.616c-7.248 12.854-21.021 21.541-36.828 21.541-15.71 0-29.405-8.578-36.69-21.296a42.062 42.062 0 01-5.574-20.968c0-23.341 18.923-42.263 42.264-42.263 15.609 0 29.232 8.471 36.553 21.059l36.941-21.272c-14.683-25.346-42.096-42.398-73.494-42.398-46.876 0-84.875 38-84.875 84.874 0 15.378 4.091 29.799 11.241 42.238 14.646 25.48 42.137 42.637 73.634 42.637 31.555 0 59.089-17.226 73.714-42.781l-36.886-21.371"
           />
         </motion.svg>
+        </div>
       );
 }

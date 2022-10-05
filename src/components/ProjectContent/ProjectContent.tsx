@@ -13,7 +13,8 @@ export type LinkInfo = {
 
 export type ProjectContentParams = {
     projectNum: string
-    text: string
+    text: string, 
+    titleText: string,
     overrideProjectString?: string
     numFontSize?: number
     projectFontSize?: number
@@ -21,7 +22,7 @@ export type ProjectContentParams = {
     linkInfo?: LinkInfo
 }
 
-export type ProjectNumberParams = Omit<ProjectContentParams, "text">
+export type ProjectNumberParams = Omit<ProjectContentParams, "text" | "titleText">
 
 
 export const ProjectNumber = ({
@@ -53,6 +54,7 @@ export const ProjectNumber = ({
 export const ProjectContent = ({
     projectNum, 
     text,
+    titleText,
     overrideProjectString, 
     numFontSize, 
     projectFontSize, 
@@ -68,7 +70,7 @@ export const ProjectContent = ({
         numFontSize={numFontSize}
         projectFontSize={projectFontSize}
         projectFontSpacing={projectFontSpacing}/>
-      <ProjectTitle title="Introduction" color="white" opacity="0.4"/>
+      <ProjectTitle title={titleText} color="white" opacity="0.4"/>
       <ProjectParagraph text={text}/>
       {linkInfo ? <h3>Link</h3> : null}
   

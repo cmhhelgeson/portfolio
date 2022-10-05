@@ -37,7 +37,7 @@ export const GraphQLLogoPoint = ({idx, r, xArr, yArr, toggle}: GraphQLLogoPointP
           ]
         }} 
         transition={!toggle ? {duration: "0.3"}: {
-          "duration": 5,
+          "duration": 3,
           "repeat": Infinity,
           "times": [0, 0.2, 0.4, 0.6, 0.8, 1]}}
       />

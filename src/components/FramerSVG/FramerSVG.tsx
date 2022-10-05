@@ -37,6 +37,17 @@ export const FramerSVGModified = () => {
   const [toggle, setToggle] = useState<boolean>(false);
 
   return (
+    <div style={{
+      "width": "300px", 
+      "height": "150px", 
+      "display": "block", 
+      "textAlign": "center",
+       "margin": "auto",
+       "position": "absolute",
+       "marginTop": "30px",
+       "marginLeft": "510px"}} 
+       onMouseOver={() => setToggle(true)} 
+       onMouseOut={() => setToggle(false)}>
     <motion.svg
       xmlns="http://www.w3.org/2000/svg"
       width="120"
@@ -132,6 +143,7 @@ export const FramerSVGModified = () => {
         animate={!toggle ? {} : letterAnimate}
       />
     </motion.svg>
+    </div>
   );
 
 }
