@@ -16,6 +16,7 @@ import { CSVGModified } from './components/CSVG';
 import { useMediaQuery } from './utils/useMediaQuery';
 
 
+
 const pageInfo: Omit<IntroPageProps, 
   "variants" | 
   "custom" | 
@@ -37,7 +38,7 @@ const pageInfo: Omit<IntroPageProps,
     projectNum: "Experience",
     overrideProjectString: "With", 
     titleText: "",
-    text: "Current Experience includes: "
+    text: "Current Experience includes: $cmh Software Engineer Intern: (Institutional Cash Distributors$cmhQuality Assurance Engineer:  (Dispute Dyanmics$cmhMetadata Analyst:  (Samba TV"
   }, 
   {
     key: 2,
@@ -80,6 +81,8 @@ function App() {
 
   const [[page, direction], setPage] = useState<[number, number]>([0, 0]);
 
+  const isSmall = useMediaQuery('(max-width: 780px)');
+
   const paginate = (newDirection: number) => {
     setPage([page + newDirection, 1]);
   }
@@ -111,16 +114,16 @@ function App() {
             <ReactSVGModified marginLeft={-125}/>
           </div>
           <div>
-            <GraphQLSVGModified marginLeft={-150}/>
+            {isSmall ? <GraphQLSVGModified marginTop={125} marginLeft={-125}/> : <GraphQLSVGModified marginLeft={-150}/>}
           </div>
           <div>
-            <FramerSVGModified marginLeft={-175} />
+            {isSmall ? <FramerSVGModified marginTop={225} marginLeft={-125}/> : <FramerSVGModified marginLeft={-175} />}
           </div>
           <div>
-            <GroovySVGModified marginLeft={-200}/>
+            {isSmall ? <GroovySVGModified marginTop={325} marginLeft={-135}/> : <GroovySVGModified marginLeft={-200}/>}
           </div>
           <div>
-            <CSVGModified marginLeft={-225}/>
+            {isSmall ? <CSVGModified marginTop={325} marginLeft={-140}/> : <CSVGModified marginLeft={-225}/> }
           </div>
         </div>
       </footer>

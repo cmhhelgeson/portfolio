@@ -4,7 +4,7 @@ import styles from "./IntroPage.module.css"
 import {motion} from "framer-motion"
 
 import { ProjectImage } from "../../ProjectImage"
-import { ProjectContent } from "../../ProjectContent"
+import { ProjectContent} from "../../ProjectContent"
 
 
 export type IntroPageProps = {
@@ -35,6 +35,7 @@ export const IntroPage = ({
   exit
 }: IntroPageProps) => {
 
+
   return (
   
   <motion.div className={styles.content_container} 
@@ -61,7 +62,8 @@ export const IntroPage = ({
           numFontSize={50}
           projectFontSize={60}
           text={text}
-          titleText={titleText}/>
+          titleText={titleText}
+          bold={key === 1 ? true : false}/>
       </div>   
     </motion.div>
   </motion.div> 

@@ -19,7 +19,8 @@ export type ProjectContentParams = {
     numFontSize?: number
     projectFontSize?: number
     projectFontSpacing?: number,
-    linkInfo?: LinkInfo
+    linkInfo?: LinkInfo,
+    bold?: boolean
 }
 
 export type ProjectNumberParams = Omit<ProjectContentParams, "text" | "titleText">
@@ -60,7 +61,11 @@ export const ProjectContent = ({
     projectFontSize, 
     projectFontSpacing,
     linkInfo,
+    bold
   }: ProjectContentParams) => {
+
+    const separatedText = text.split("$cmh");
+
     return (
     <div className={styles.project_content}>
     
@@ -71,7 +76,9 @@ export const ProjectContent = ({
         projectFontSize={projectFontSize}
         projectFontSpacing={projectFontSpacing}/>
       <ProjectTitle title={titleText} color="white" opacity="0.4"/>
-      <ProjectParagraph text={text}/>
+      {separatedText.map((textBlock, idx) => (
+        <ProjectParagraph bold={bold ? true : false} key={idx} text={textBlock} />
+      ))}
       {linkInfo ? <h3>Link</h3> : null}
   
     </div>

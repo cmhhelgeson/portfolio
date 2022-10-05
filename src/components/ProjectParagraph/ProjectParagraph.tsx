@@ -6,15 +6,18 @@ type ProjectParagraphParams = {
     text: string,
     color?: string,
     opacity?: string
-    fontSize?: number
+    fontSize?: number,
+    bold: boolean
 }
 
 export const ProjectParagraph = ({
     text, 
     color, 
     opacity,
-    fontSize
+    fontSize,
+    bold
 }: ProjectParagraphParams) => {
+    const t = text.split("(");
     return (
         <p className={styles.project_paragraph}
             style={{
@@ -24,7 +27,8 @@ export const ProjectParagraph = ({
                 "padding": "10px"
             }}
         >
-            {text}
+            {bold ? <b>{t[0]}</b> : t[0]}
+            {t[1]}
         </p>
     )
 }
