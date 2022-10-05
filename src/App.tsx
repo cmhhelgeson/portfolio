@@ -35,8 +35,8 @@ const pageInfo: Omit<IntroPageProps,
   {
     key: 1, 
     imgSrc: backgroundImageTwo, 
-    projectNum: "Experience",
-    overrideProjectString: "With", 
+    projectNum: "Job",
+    overrideProjectString: "Experience", 
     titleText: "",
     text: "Current Experience includes: $cmh Software Engineer Intern: (Institutional Cash Distributors$cmhQuality Assurance Engineer:  (Dispute Dyanmics$cmhMetadata Analyst:  (Samba TV"
   }, 
@@ -90,13 +90,13 @@ function App() {
   return (
     <div className="App">
       <header style={{marginBottom: "0px"}}>
-      <h1 style={{marginBottom: "0px"}}>Christian Helgeson Portfolio</h1>
       </header>
 
       <div className="projects">
         <AnimatePresence initial={false} custom={direction}>
           {<IntroPage 
             key={page} 
+            overrideProjectString={pageInfo[page].overrideProjectString}
             imgSrc={pageInfo[page].imgSrc}
             text={pageInfo[page].text}
             projectNum={pageInfo[page].projectNum}
