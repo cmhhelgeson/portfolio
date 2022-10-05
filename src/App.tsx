@@ -13,6 +13,7 @@ import { GraphQLSVGModified } from './components/GraphQLSVG';
 import { FramerSVGModified } from './components/FramerSVG';
 import { GroovySVGModified } from './components/GroovySVG';
 import { CSVGModified } from './components/CSVG';
+import { useMediaQuery } from './utils/useMediaQuery';
 
 
 const pageInfo: Omit<IntroPageProps, 
@@ -104,30 +105,23 @@ function App() {
       </div>  
       {page < 2 ? <div className="next_arrow" onClick={() => paginate(1)}/> : null}
       {page > 0 ? <div className="prev_arrow" onClick={() => paginate(-1)}/> : null}
-      <footer style={{
-        "position": "fixed",
-        "display": "flex",
-        "left": 0, 
-        "bottom": 0,
-        "backgroundColor": "#a7e0e3", 
-        "width": "100%",
-        "height": "120px",
-        "justifyContent": "space-evenly"
-    }}>
-        <div>
-          <ReactSVGModified />
-        </div>
-        <div>
-          <GraphQLSVGModified/>
-        </div>
-        <div>
-          <FramerSVGModified />
-        </div>
-        <div>
-          <GroovySVGModified />
-        </div>
-        <div>
-          <CSVGModified />
+      <footer className="svg_footer" style={{"backgroundColor": "#a7e0e3"}}>
+        <div className='svg_container'>
+          <div>
+            <ReactSVGModified marginLeft={-125}/>
+          </div>
+          <div>
+            <GraphQLSVGModified marginLeft={-150}/>
+          </div>
+          <div>
+            <FramerSVGModified marginLeft={-175} />
+          </div>
+          <div>
+            <GroovySVGModified marginLeft={-200}/>
+          </div>
+          <div>
+            <CSVGModified marginLeft={-225}/>
+          </div>
         </div>
       </footer>
     </div>

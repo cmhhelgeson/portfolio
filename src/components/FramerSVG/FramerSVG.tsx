@@ -31,8 +31,12 @@ const letterAnimate = {
   x: [0, -9]
 }
 
+type FramerSVGProps = {
+  marginTop?: number
+  marginLeft?: number
+}
 
-export const FramerSVGModified = () => {
+export const FramerSVGModified = ({marginTop, marginLeft}: FramerSVGProps) => {
 
   const [toggle, setToggle] = useState<boolean>(false);
 
@@ -44,8 +48,8 @@ export const FramerSVGModified = () => {
       "textAlign": "center",
        "margin": "auto",
        "position": "absolute",
-       "marginTop": "30px",
-       "marginLeft": "510px"}} 
+       "marginTop": marginTop ? `${marginTop}px` : "30px",
+       "marginLeft": marginLeft ? `${marginLeft}px` : "0px"}} 
        onMouseOver={() => setToggle(true)} 
        onMouseOut={() => setToggle(false)}>
     <motion.svg

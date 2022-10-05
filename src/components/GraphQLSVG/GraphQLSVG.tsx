@@ -35,7 +35,13 @@ export const GraphQLSVG = () => {
       );
 }
 
-export const GraphQLSVGModified = () => {
+type GraphQLSVGProps = {
+  marginLeft?: number,
+  marginTop?: number,
+  
+}
+
+export const GraphQLSVGModified = ({marginLeft, marginTop}: GraphQLSVGProps) => {
 
   const [toggle, setToggle] = useState<boolean>(false);
   
@@ -53,8 +59,8 @@ export const GraphQLSVGModified = () => {
       "textAlign": "center",
        "margin": "auto",
        "position": "absolute",
-       "marginTop": "25px",
-       "marginLeft": "260px"}} 
+       "marginTop": marginTop ? `${marginTop}px` : "25px",
+       "marginLeft": marginLeft ? `${marginLeft}px` : "0px"}} 
        onMouseOut={() => setToggle(false)}
        onMouseOver={() => setToggle(true)}>
       <motion.svg

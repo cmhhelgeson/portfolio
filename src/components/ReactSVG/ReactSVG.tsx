@@ -1,8 +1,13 @@
 import React, {useState} from "react";
 
+import { useMediaQuery } from "../../utils/useMediaQuery";
+
 import {motion} from "framer-motion"
 
 export const ReactSVG = () => {
+
+  
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -41,9 +46,15 @@ const draw = {
   }
 };
 
-export const ReactSVGModified = () => {
+type ReactSVGProps = {
+  marginTop?: number
+  marginLeft?: number
+}
+
+export const ReactSVGModified = ({marginTop, marginLeft}: ReactSVGProps) => {
 
   const [toggle, setToggle] = useState<boolean>(false);
+
 
 
   return (
@@ -54,7 +65,8 @@ export const ReactSVGModified = () => {
       "textAlign": "center",
        "margin": "auto",
        "position": "absolute",
-       "marginTop": "25px"}}
+       "marginTop": marginTop ? `${marginTop}px` : "25px",
+       "marginLeft": marginLeft ? `${marginLeft}px` : "0px"}}
        onMouseOut={() => setToggle(false)}
        onMouseOver={() => setToggle(true)}>
     <motion.svg

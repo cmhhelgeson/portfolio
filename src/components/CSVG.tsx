@@ -40,7 +40,13 @@ export const CSVG = () => {
   );
 }
 
-export const CSVGModified = () => {
+
+type CSVGProps = {
+  marginTop?: number
+  marginLeft?: number
+}
+
+export const CSVGModified = ({marginTop, marginLeft}: CSVGProps) => {
     const [toggle, setToggle] = useState<boolean>(false);
 
     return (
@@ -51,8 +57,8 @@ export const CSVGModified = () => {
         "textAlign": "center",
          "margin": "auto",
          "position": "absolute",
-         "marginTop": "-75px",
-         "marginLeft": "875px"}} >
+         "marginTop": marginTop ? `${marginTop}px` : "-75px",
+         "marginLeft": marginLeft ? `${marginLeft}px` : "0px"}} >
         <motion.svg
           xmlns="http://www.w3.org/2000/svg"
           width="222"
