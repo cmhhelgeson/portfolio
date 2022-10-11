@@ -38,7 +38,7 @@ const pageInfo: Omit<IntroPageProps,
     projectNum: "Job",
     overrideProjectString: "Experience", 
     titleText: "",
-    text: "Current Experience includes: $cmh Software Engineer Intern: (Institutional Cash Distributors$cmhQuality Assurance Engineer:  (Dispute Dyanmics$cmhMetadata Analyst:  (Samba TV"
+    text: "Current Experience includes: $cmh Software Engineer Intern at Institutional Cash Distributors$cmhQuality Assurance Engineer at Dispute Dyanmics$cmhMetadata Analyst at Samba TV"
   }, 
   {
     key: 2,
