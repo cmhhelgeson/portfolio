@@ -3,6 +3,7 @@ WIP personal portfolio website: http://cmhhelgeson.github.io/portfolio
 
 
 JOURNAL: 
+
     9/28-9/29: Learned Framer Motion and created animations for
     various logos. 
 

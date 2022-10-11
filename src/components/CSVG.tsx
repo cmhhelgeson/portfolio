@@ -57,7 +57,7 @@ export const CSVGModified = ({marginTop, marginLeft}: CSVGProps) => {
         "textAlign": "center",
          "margin": "auto",
          "position": "absolute",
-         "marginTop": marginTop ? `${marginTop}px` : "-75px",
+         "marginTop": marginTop ? `${marginTop}px` : "-97px",
          "marginLeft": marginLeft ? `${marginLeft}px` : "0px"}} >
         <motion.svg
           xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +65,7 @@ export const CSVGModified = ({marginTop, marginLeft}: CSVGProps) => {
           height="250"
           viewBox="0 0 256 288"
           initial={{scale: 0.25, x: 2}}
-          animate={!toggle ? {} : {scale: 0.45}}
+          animate={!toggle ? {} : {scale: 0.28}}
           onMouseEnter={() => setToggle(true)}
           onMouseLeave={() => setToggle(false)}
         >

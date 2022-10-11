@@ -48,7 +48,7 @@ export const FramerSVGModified = ({marginTop, marginLeft}: FramerSVGProps) => {
       "textAlign": "center",
        "margin": "auto",
        "position": "absolute",
-       "marginTop": marginTop ? `${marginTop}px` : "15px",
+       "marginTop": marginTop ? `${marginTop}px` : "10px",
        "marginLeft": marginLeft ? `${marginLeft}px` : "0px"}} 
        onMouseOver={() => setToggle(true)} 
        onMouseOut={() => setToggle(false)}>
