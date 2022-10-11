@@ -65,7 +65,7 @@ export const ReactSVGModified = ({marginTop, marginLeft}: ReactSVGProps) => {
       "textAlign": "center",
        "margin": "auto",
        "position": "absolute",
-       "marginTop": marginTop ? `${marginTop}px` : "25px",
+       "marginTop": marginTop ? `${marginTop}px` : "10px",
        "marginLeft": marginLeft ? `${marginLeft}px` : "0px"}}
        onMouseOut={() => setToggle(false)}
        onMouseOver={() => setToggle(true)}>
@@ -74,7 +74,7 @@ export const ReactSVGModified = ({marginTop, marginLeft}: ReactSVGProps) => {
       height={50}
       xmlns="http://www.w3.org/2000/svg"
       fillRule="evenodd"
-      initial={{scale: 2.5}}
+      initial={{scale: 1.5}}
       animate={toggle ? "visible" : ""}
       onMouseEnter={() => setToggle(true)}
       onMouseLeave={() => setToggle(false)}

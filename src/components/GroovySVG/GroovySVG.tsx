@@ -45,12 +45,12 @@ export const GroovySVGModified = ({marginLeft, marginTop}: GroovySVGModifiedProp
       "textAlign": "center",
        "margin": "auto",
        "position": "absolute",
-       "marginTop": marginTop ? `${marginTop}px`: "25px",
+       "marginTop": marginTop ? `${marginTop}px`: "10px",
        "marginLeft": marginLeft ? `${marginLeft}px` : "0px"}} onMouseOut={() => setToggle(false)}  onMouseOver={() => setToggle(true)}>
     <motion.svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" 
-    initial={{scale: 3, fill: TrendyBlue}}
+    initial={{scale: 2, fill: TrendyBlue}}
     animate={!toggle  ? {}: {
-      scale: [3, 3.3, 3, 3.3, 3],
+      scale: [2, 2.3, 2, 2.3, 2],
     }}
       transition={!toggle ? {} : {ease: "anticipate", repeat: Infinity, duration: 1.2}}
       onMouseEnter={() => setToggle(true)}

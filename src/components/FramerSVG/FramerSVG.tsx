@@ -48,7 +48,7 @@ export const FramerSVGModified = ({marginTop, marginLeft}: FramerSVGProps) => {
       "textAlign": "center",
        "margin": "auto",
        "position": "absolute",
-       "marginTop": marginTop ? `${marginTop}px` : "30px",
+       "marginTop": marginTop ? `${marginTop}px` : "15px",
        "marginLeft": marginLeft ? `${marginLeft}px` : "0px"}} 
        onMouseOver={() => setToggle(true)} 
        onMouseOut={() => setToggle(false)}>
@@ -62,7 +62,7 @@ export const FramerSVGModified = ({marginTop, marginLeft}: FramerSVGProps) => {
       version="1.1"
       viewBox="0 0 120 60"
       xmlSpace="preserve"
-      initial={{scale: 2.3}}
+      initial={{scale: 1.5}}
       onMouseEnter={() => setToggle(true)}
       onMouseLeave={() => setToggle(false)}
       animate={'visible'}

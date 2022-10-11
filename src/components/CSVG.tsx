@@ -64,7 +64,7 @@ export const CSVGModified = ({marginTop, marginLeft}: CSVGProps) => {
           width="222"
           height="250"
           viewBox="0 0 256 288"
-          initial={{scale: 0.4, x: 2}}
+          initial={{scale: 0.25, x: 2}}
           animate={!toggle ? {} : {scale: 0.45}}
           onMouseEnter={() => setToggle(true)}
           onMouseLeave={() => setToggle(false)}
