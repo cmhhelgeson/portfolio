@@ -1,4 +1,5 @@
-Unfinished personal portfolio website.
+WIP personal portfolio website: http://cmhhelgeson.github.io/portfolio
+
 
 
 JOURNAL: 
@@ -8,9 +9,8 @@ JOURNAL:
     9/30: Researched good design templates and implemented one I liked
     to be more extensible
 
+    10/5: Finished Template
 
 TODO: 
-    . Finish general layout of project
-    . Add automatic fetching of new projects from github
     . Finish the projects associated with the portfolio
-    . 
+    
