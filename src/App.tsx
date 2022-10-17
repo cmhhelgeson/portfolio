@@ -14,7 +14,89 @@ import { FramerSVGModified } from './components/FramerSVG';
 import { GroovySVGModified } from './components/GroovySVG';
 import { CSVGModified } from './components/CSVG';
 import { useMediaQuery } from './utils/useMediaQuery';
+import { ReduxSVG, ReduxSVGModified } from './components/ReduxSVG';
 
+
+const PageOne = () => {
+  return (
+    <div>
+      <i>Welcome to my portfolio!</i>
+      <p>I'm a recent Johns Hopkins Graduate with professional experience in Front-End React Development, Backend Development with Java Spring/Groovy/SQL, and cybersecurity research. </p>
+      <p>For three years, I've been working to learn leading technologies and perfect my understanding of foundational algorithms and software engineering practices. </p>
+      <p>As a developer with experience working under both AGILE and SCRUM frameworks, I can be counted on to adapt to any work environment, contribute collaboratively, and be a pervasive promoter of my team's ideas.</p>
+    </div>
+
+  )
+}
+
+
+const PageTwo = () => {
+  return (
+    <div>
+    <p>
+      <b>Institutional Cash Distributors (ICD)</b>
+      <i>- Golden, Colorado </i>
+      <br></br>
+      Software Engineer Intern
+      <br></br>
+      <br></br>
+      Increased code coverage for Front-end React components from 40% to over 60%
+      <br></br>
+      <br></br>
+      Implemented features to frontend and backend systems using the Groovy+Grails stack
+    </p>
+    <p>
+      <b>Dispute Dynamics</b>
+      <i> Laguna Niguel, California </i>
+      <br></br>
+      QA Assistant
+      <br></br>
+      <br></br>
+      Tested survey creation system and distrubtion system across multiple Mac and iPad Applications
+      <br></br>
+      <br></br>
+      Modified aging VBA application to work on modern hardware
+    </p>
+    <p>
+      <b>Samba TV</b>
+      <i> Reno, Nevada (Remote) </i>
+      <br></br>
+      Metadata Analyst. 
+      <br></br>
+      Improved overall performance of the metadata team through efficient analysis of commercial media from across the world
+    </p>
+    </div>
+  )
+}
+
+const PageThree = () => {
+  return (
+    <div>
+      <p>A Work-In-Progress Simple Software Renderer built with React and the canvas</p>
+      <b>Currently Implemented: </b>
+      <br></br>
+      <br></br>
+      Basic Data Structures (3D Vectors, UV Vectors, Matrices)
+      <br></br>
+      Camera Projection, Face Culling, Simple Lighting
+      <br></br>
+      Asynchronous Obj Loading and Parsing
+      <br></br>
+      <br></br>
+      <b>TODO: </b>
+      <br></br>
+      <br></br>
+      Z-Buffer
+      Performance
+      Texture Mapping
+      Goraud Shading
+      Normal Mapping
+      <br></br>
+      <br></br>
+      <a href="https://github.com/cmhhelgeson/3D-in-Browser">LINK TO PROJECT</a>
+    </div>
+  );
+}
 
 
 const pageInfo: Omit<IntroPageProps, 
@@ -30,22 +112,32 @@ const pageInfo: Omit<IntroPageProps,
     projectNum: "Welcome",
     overrideProjectString: "Page",
     titleText: "Introduction",
-    text: "I'm a recent Johns Hopkins Graduate with professional experience in Front-End React Development, Backend Development with Java Spring/Groovy/SQL, and cybersecurity research. For three years, I've been working to learn leading technologies and perfect my understanding of foundational algorithms and software engineering practicesAs a developer with experience working under both AGILE and SCRUM frameworks, I can be counted on to adapt to any work environment, contribute collaboratively, and be a pervasive promoter of my team's ideas.",
+    text: "",
+    htmlElements: PageOne(),
   }, 
   {
     key: 1, 
     imgSrc: backgroundImageTwo, 
     projectNum: "Job",
     overrideProjectString: "Experience", 
-    titleText: "",
-    text: "Current Experience includes: $cmh Software Engineer Intern at Institutional Cash Distributors$cmhQuality Assurance Engineer at Dispute Dyanmics$cmhMetadata Analyst at Samba TV"
+    titleText: "at: ",
+    htmlElements: PageTwo(),
+    text: ""
   }, 
   {
     key: 2,
     imgSrc: backgroundImageThree,
     projectNum: "01", 
-    titleText: "",
-    text: "Coming soon"
+    titleText: "Software Rendering",
+    text: "",
+    htmlElements: PageThree()
+  },
+  {
+    key: 3,
+    imgSrc:  "",
+    projectNum: "02",
+    titleText: "Leetcode Examples",
+    text: "Yo"
   }
 ]
 
@@ -81,7 +173,9 @@ function App() {
 
   const [[page, direction], setPage] = useState<[number, number]>([0, 0]);
 
-  const isSmall = useMediaQuery('(max-width: 780px)');
+  const isSmallWidth = useMediaQuery('(max-width: 780px)');
+  const isSmallHeight = useMediaQuery('(max-height: 800px)')
+
 
   const paginate = (newDirection: number) => {
     setPage([page + newDirection, 1]);
@@ -106,27 +200,30 @@ function App() {
             exit="exit"
             titleText={pageInfo[page].titleText}
             variants={variants}
+            htmlElements={pageInfo[page].htmlElements}
         />}
         </AnimatePresence>
       </div>  
-      {page < 2 ? <div className="next_arrow" onClick={() => paginate(1)}/> : null}
+      {page < pageInfo.length - 1 ? <div className="next_arrow" onClick={() => paginate(1)}/> : null}
       {page > 0 ? <div className="prev_arrow" onClick={() => paginate(-1)}/> : null}
       <footer className="svg_footer" style={{"backgroundColor": "#a7e0e3"}}>
         <div className='svg_container'>
           <div>
-            <ReactSVGModified marginLeft={-125}/>
+            <ReactSVGModified marginLeft={-125} marginTop={isSmallHeight ? -2 : 0}/>
           </div>
           <div>
-            {isSmall ? <GraphQLSVGModified marginTop={125} marginLeft={-125}/> : <GraphQLSVGModified marginLeft={-150}/>}
+            {isSmallWidth ? 
+              <GraphQLSVGModified marginTop={125} marginLeft={-125}/> : 
+              <GraphQLSVGModified marginLeft={-150} marginTop={isSmallHeight ? -2 : 0}/>}
           </div>
           <div>
-            {isSmall ? <FramerSVGModified marginTop={225} marginLeft={-125}/> : <FramerSVGModified marginLeft={-175} />}
+            {isSmallWidth ? <FramerSVGModified marginTop={225} marginLeft={-125}/> : <FramerSVGModified marginLeft={-175} marginTop={isSmallHeight ? -2 : 0}/>}
           </div>
           <div>
-            {isSmall ? <GroovySVGModified marginTop={325} marginLeft={-135}/> : <GroovySVGModified marginLeft={-200}/>}
+            {isSmallWidth ? <GroovySVGModified marginTop={325} marginLeft={-135}/> : <GroovySVGModified marginLeft={-200} marginTop={isSmallHeight ? -2 : 0}/>}
           </div>
           <div>
-            {isSmall ? <CSVGModified marginTop={325} marginLeft={-140}/> : <CSVGModified marginLeft={-225}/> }
+            {isSmallWidth ? <CSVGModified marginTop={325} marginLeft={-140}/> : <CSVGModified marginLeft={-225} marginTop={isSmallHeight ? -106 : -97}/> }
           </div>
         </div>
       </footer>

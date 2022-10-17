@@ -43,7 +43,7 @@ const draw = {
         opacity: { delay, duration: 0.01 }
       }
     };
-  }
+  },
 };
 
 type ReactSVGProps = {
@@ -54,6 +54,8 @@ type ReactSVGProps = {
 export const ReactSVGModified = ({marginTop, marginLeft}: ReactSVGProps) => {
 
   const [toggle, setToggle] = useState<boolean>(false);
+
+  const isSmallHeight = useMediaQuery('(max-height: ')
 
 
 

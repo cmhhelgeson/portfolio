@@ -5,11 +5,13 @@ import {motion} from "framer-motion"
 
 import { ProjectImage } from "../../ProjectImage"
 import { ProjectContent} from "../../ProjectContent"
+import { JsxElement } from "typescript"
+import { ReactElement } from "react"
 
 
 export type IntroPageProps = {
   key: number,
-  text: string,
+  text: string
   projectNum: string,
   imgSrc: string,
   titleText: string,
@@ -19,6 +21,7 @@ export type IntroPageProps = {
   initial: string,
   animate: any,
   exit: any
+  htmlElements?: JSX.Element
 }
 
 export const IntroPage = ({
@@ -32,7 +35,8 @@ export const IntroPage = ({
   initial, 
   custom,
   animate,
-  exit
+  exit,
+  htmlElements
 }: IntroPageProps) => {
 
 
@@ -63,7 +67,8 @@ export const IntroPage = ({
           projectFontSize={60}
           text={text}
           titleText={titleText}
-          bold={key === 1 ? true : false}/>
+          bold={key === 1 ? true : false}
+          htmlElements={htmlElements}/>
       </div>   
     </motion.div>
   </motion.div> 

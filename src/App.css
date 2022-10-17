@@ -108,3 +108,9 @@
   }
 
 }
+
+@media (max-height: 800px) {
+  .svg_footer {
+    height: 60px;
+  }
+}

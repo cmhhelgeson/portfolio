@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {motion} from "framer-motion"
 import { GraphQLLogoPoint } from "./GraphQLLogoPoint";
+import { useMediaQuery } from "../../utils/useMediaQuery";
 
 
 const hexPathTop = 
@@ -38,12 +39,16 @@ export const GraphQLSVG = () => {
 type GraphQLSVGProps = {
   marginLeft?: number,
   marginTop?: number,
-  
+  initialScale?: number
 }
 
-export const GraphQLSVGModified = ({marginLeft, marginTop}: GraphQLSVGProps) => {
+export const GraphQLSVGModified = ({marginLeft, marginTop, initialScale}: GraphQLSVGProps) => {
 
   const [toggle, setToggle] = useState<boolean>(false);
+
+  const isSmallHeight = useMediaQuery('(max-height: 800px)');
+
+  const initScale = initialScale ? initialScale : 1.5;
   
   const xArr: ArrLength6<number> = 
     [19.3, 30.7, 30.7, 19.3, 7.4, 7.4];
