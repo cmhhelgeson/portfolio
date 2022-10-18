@@ -6,3 +6,11 @@
     line-height: 1.2rem;
     margin-top: 50px;
 }
+
+@media(max-width: 1260px) {
+    .project_title {
+        font-size: 36px;
+    }
+
+}
+

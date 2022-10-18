@@ -8,6 +8,7 @@ import { IntroPageProps } from './components/pages/IntroPage';
 import backgroundImageOne from "./imgs/me.jpg"
 import backgroundImageTwo from "./imgs/code.webp"
 import backgroundImageThree from "./imgs/leaves.webp"
+import backgroundImageFour from "./imgs/computer.webp"
 import { ReactSVGModified } from './components/ReactSVG/ReactSVG';
 import { GraphQLSVGModified } from './components/GraphQLSVG';
 import { FramerSVGModified } from './components/FramerSVG';
@@ -98,6 +99,21 @@ const PageThree = () => {
   );
 }
 
+const PageFour = () => {
+  return (
+    <div>
+      <p>A website that visually demonstrates the algorithms behind common LeetCode Problems</p>
+      <br></br>
+      <br></br>
+      <p>The site is intended to help new or developing software engineers more easily grapple with common problems.</p>
+      <br></br>
+      <br></br>
+      <p><i>Coming Soon!</i></p>
+    </div>
+  )
+
+}
+
 
 const pageInfo: Omit<IntroPageProps, 
   "variants" | 
@@ -134,10 +150,11 @@ const pageInfo: Omit<IntroPageProps,
   },
   {
     key: 3,
-    imgSrc:  "",
+    imgSrc: backgroundImageFour,
     projectNum: "02",
     titleText: "Leetcode Examples",
-    text: "Yo"
+    text: "",
+    htmlElements: PageFour(),
   }
 ]
 
