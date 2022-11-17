@@ -5,10 +5,10 @@ import {IntroPage} from "./components/pages/IntroPage"
 
 import { IntroPageProps } from './components/pages/IntroPage';
 
-import backgroundImageOne from "./imgs/me.jpg"
-import backgroundImageTwo from "./imgs/code.webp"
-import backgroundImageThree from "./imgs/leaves.webp"
-import backgroundImageFour from "./imgs/computer.webp"
+import backgroundImageMe from "./imgs/me.jpg"
+import backgroundImageJobs from "./imgs/code.webp"
+import backgroundImageRender from "./imgs/leaves.webp"
+import backgroundImageLCSlice from "./imgs/computer.webp"
 import { ReactSVGModified } from './components/ReactSVG/ReactSVG';
 import { GraphQLSVGModified } from './components/GraphQLSVG';
 import { FramerSVGModified } from './components/FramerSVG';
@@ -70,7 +70,7 @@ const PageTwo = () => {
   )
 }
 
-const PageThree = () => {
+const PageFour = () => {
   return (
     <div>
       <p>A Work-In-Progress Simple Software Renderer built with React and the canvas</p>
@@ -99,16 +99,24 @@ const PageThree = () => {
   );
 }
 
-const PageFour = () => {
+const PageThree = () => {
   return (
     <div>
-      <p>A website that visually demonstrates the algorithms behind common LeetCode Problems</p>
+      <p>A website that visually demonstrates the algorithms behind common Algorithm Problems</p>
+      <p>The site is intended to help new or developing software engineers more easily grapple with these algorithms.</p>
+      <b>Currently Implemented: </b>
       <br></br>
       <br></br>
-      <p>The site is intended to help new or developing software engineers more easily grapple with common problems.</p>
+      <i>Depth-First-Search</i> Grid Problems and Testing
       <br></br>
       <br></br>
-      <p><i>Coming Soon!</i></p>
+      <b>TODO:</b>
+      <br></br>
+      Populate data structures from database.
+      Add action log which explains each action.
+      <br></br>
+      <br></br>
+      <a href="https://github.com/cmhhelgeson/lc_slice">LINK TO PROJECT</a>
     </div>
   )
 
@@ -124,7 +132,7 @@ const pageInfo: Omit<IntroPageProps,
   "animate">[] = [
   {
     key : 0, 
-    imgSrc: backgroundImageOne, 
+    imgSrc: backgroundImageMe, 
     projectNum: "Welcome",
     overrideProjectString: "Page",
     titleText: "Introduction",
@@ -133,7 +141,7 @@ const pageInfo: Omit<IntroPageProps,
   }, 
   {
     key: 1, 
-    imgSrc: backgroundImageTwo, 
+    imgSrc: backgroundImageJobs, 
     projectNum: "Job",
     overrideProjectString: "Experience", 
     titleText: "at: ",
@@ -142,17 +150,17 @@ const pageInfo: Omit<IntroPageProps,
   }, 
   {
     key: 2,
-    imgSrc: backgroundImageThree,
-    projectNum: "01", 
-    titleText: "Software Rendering",
+    imgSrc: backgroundImageLCSlice,
+    projectNum: "02", 
+    titleText: "LC Slice",
     text: "",
     htmlElements: PageThree()
   },
   {
     key: 3,
-    imgSrc: backgroundImageFour,
-    projectNum: "02",
-    titleText: "Leetcode Examples",
+    imgSrc: backgroundImageRender,
+    projectNum: "01",
+    titleText: "LC Slice",
     text: "",
     htmlElements: PageFour(),
   }
@@ -189,6 +197,7 @@ const variants = {
 function App() {
 
   const [[page, direction], setPage] = useState<[number, number]>([0, 0]);
+  const [lockButton, setLockButton] = useState<boolean>(false);
 
   const isSmallWidth = useMediaQuery('(max-width: 780px)');
   const isSmallHeight = useMediaQuery('(max-height: 800px)')
@@ -198,13 +207,30 @@ function App() {
     setPage([page + newDirection, 1]);
   }
 
+
+  const onPaginateRight = () => {
+    if (lockButton) {
+      return;
+    }
+    setLockButton(true);
+    paginate(1);
+  }
+
+  const onPaginateLeft = () => {
+    if (lockButton) {
+      return;
+    }
+    setLockButton(true);
+    paginate(-1);
+  }
+
   return (
     <div className="App">
       <header style={{marginBottom: "0px"}}>
       </header>
 
       <div className="projects">
-        <AnimatePresence initial={false} custom={direction}>
+        <AnimatePresence initial={false} custom={direction} onExitComplete={() => setLockButton(false)}>
           {<IntroPage 
             key={page} 
             overrideProjectString={pageInfo[page].overrideProjectString}
@@ -221,8 +247,8 @@ function App() {
         />}
         </AnimatePresence>
       </div>  
-      {page < pageInfo.length - 1 ? <div className="next_arrow" onClick={() => paginate(1)}/> : null}
-      {page > 0 ? <div className="prev_arrow" onClick={() => paginate(-1)}/> : null}
+      {page < pageInfo.length - 1 ? <div className="next_arrow" onClick={() => onPaginateRight()}/> : null}
+      {page > 0 ? <div className="prev_arrow" onClick={() => onPaginateLeft()}/> : null}
       <footer className="svg_footer" style={{"backgroundColor": "#a7e0e3"}}>
         <div className='svg_container'>
           <div>
