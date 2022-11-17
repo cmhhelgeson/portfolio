@@ -70,6 +70,29 @@ const PageTwo = () => {
   )
 }
 
+const PageThree = () => {
+  return (
+    <div>
+      <p>A website that visually demonstrates the algorithms behind common Algorithm Problems</p>
+      <p>The site is intended to help new or developing software engineers more easily grapple with these algorithms.</p>
+      <b>Currently Implemented: </b>
+      <br></br>
+      <br></br>
+      <i>Depth-First-Search</i> Grid Problems and Testing
+      <br></br>
+      <br></br>
+      <b>TODO:</b>
+      <br></br>
+      Populate data structures from database.
+      Add action log which explains each action.
+      <br></br>
+      <br></br>
+      <a href="https://github.com/cmhhelgeson/lc_slice">LINK TO PROJECT</a>
+    </div>
+  )
+
+}
+
 const PageFour = () => {
   return (
     <div>
@@ -99,28 +122,7 @@ const PageFour = () => {
   );
 }
 
-const PageThree = () => {
-  return (
-    <div>
-      <p>A website that visually demonstrates the algorithms behind common Algorithm Problems</p>
-      <p>The site is intended to help new or developing software engineers more easily grapple with these algorithms.</p>
-      <b>Currently Implemented: </b>
-      <br></br>
-      <br></br>
-      <i>Depth-First-Search</i> Grid Problems and Testing
-      <br></br>
-      <br></br>
-      <b>TODO:</b>
-      <br></br>
-      Populate data structures from database.
-      Add action log which explains each action.
-      <br></br>
-      <br></br>
-      <a href="https://github.com/cmhhelgeson/lc_slice">LINK TO PROJECT</a>
-    </div>
-  )
 
-}
 
 
 const pageInfo: Omit<IntroPageProps, 
@@ -151,7 +153,7 @@ const pageInfo: Omit<IntroPageProps,
   {
     key: 2,
     imgSrc: backgroundImageLCSlice,
-    projectNum: "02", 
+    projectNum: "01", 
     titleText: "LC Slice",
     text: "",
     htmlElements: PageThree()
@@ -159,7 +161,7 @@ const pageInfo: Omit<IntroPageProps,
   {
     key: 3,
     imgSrc: backgroundImageRender,
-    projectNum: "01",
+    projectNum: "02",
     titleText: "LC Slice",
     text: "",
     htmlElements: PageFour(),
