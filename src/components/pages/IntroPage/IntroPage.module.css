@@ -1,6 +1,7 @@
 .content_container {
     display: flex;
     align-items: center;
+    padding-top: 50px;
 }
 
 .content {

@@ -11,6 +11,7 @@ import { ReactElement } from "react"
 
 export type IntroPageProps = {
   key: number,
+  page?: number
   text: string
   projectNum: string,
   imgSrc: string,
@@ -21,11 +22,12 @@ export type IntroPageProps = {
   initial: string,
   animate: any,
   exit: any
-  htmlElements?: JSX.Element
+  htmlElements?: JSX.Element,
 }
 
 export const IntroPage = ({
   key, 
+  page,
   text, 
   titleText,
   projectNum, 
@@ -67,6 +69,7 @@ export const IntroPage = ({
           projectFontSize={60}
           text={text}
           titleText={titleText}
+          contentTopPadding={page === 0 ? "200px" : "0px"}
           bold={key === 1 ? true : false}
           htmlElements={htmlElements}/>
       </div>   

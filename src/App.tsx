@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
-import { AnimatePresence} from 'framer-motion';
+import { AnimatePresence, motion} from 'framer-motion';
 import {IntroPage} from "./components/pages/IntroPage"
 
 import { IntroPageProps } from './components/pages/IntroPage';
@@ -16,6 +16,7 @@ import { GroovySVGModified } from './components/GroovySVG';
 import { CSVGModified } from './components/CSVG';
 import { useMediaQuery } from './utils/useMediaQuery';
 import { ReduxSVG, ReduxSVGModified } from './components/ReduxSVG';
+import { ProjectTitle } from './components/ProjectTitle';
 
 
 const PageOne = () => {
@@ -162,7 +163,7 @@ const pageInfo: Omit<IntroPageProps,
     key: 3,
     imgSrc: backgroundImageRender,
     projectNum: "02",
-    titleText: "LC Slice",
+    titleText: "Software Rendering",
     text: "",
     htmlElements: PageFour(),
   }
@@ -204,6 +205,8 @@ function App() {
   const isSmallWidth = useMediaQuery('(max-width: 780px)');
   const isSmallHeight = useMediaQuery('(max-height: 800px)')
 
+  const [titleHover, setTitleHover] = useState<boolean>(false);
+
 
   const paginate = (newDirection: number) => {
     setPage([page + newDirection, 1]);
@@ -228,13 +231,17 @@ function App() {
 
   return (
     <div className="App">
-      <header style={{marginBottom: "0px"}}>
+      <header style={{position: "fixed", width: "100%", display: "flex", "justifyContent": "center"}}>
+        <div onMouseEnter={() => setTitleHover(true)} onMouseLeave={() => setTitleHover(false)}>
+        <ProjectTitle title={"Christian Helgeson Portfolio"} color="black" opacity={titleHover ? "1": "0.5"} />
+        </div>
       </header>
 
       <div className="projects">
-        <AnimatePresence initial={false} custom={direction} onExitComplete={() => setLockButton(false)}>
+        <AnimatePresence initial={true} custom={direction} onExitComplete={() => setLockButton(false)}>
           {<IntroPage 
             key={page} 
+            page={page}
             overrideProjectString={pageInfo[page].overrideProjectString}
             imgSrc={pageInfo[page].imgSrc}
             text={pageInfo[page].text}
@@ -251,7 +258,8 @@ function App() {
       </div>  
       {page < pageInfo.length - 1 ? <div className="next_arrow" onClick={() => onPaginateRight()}/> : null}
       {page > 0 ? <div className="prev_arrow" onClick={() => onPaginateLeft()}/> : null}
-      <footer className="svg_footer" style={{"backgroundColor": "#a7e0e3"}}>
+      <AnimatePresence initial={true}>
+      <motion.footer initial={{"opacity": 0, "y": 100}} animate={{"opacity": 1, "y": 0}} transition={{type: "spring", stiffness: 200, duration: 0.5}} className="svg_footer" style={{"backgroundColor": "#a7e0e3"}}>
         <div className='svg_container'>
           <div>
             <ReactSVGModified marginLeft={-125} marginTop={isSmallHeight ? -2 : 0}/>
@@ -271,7 +279,8 @@ function App() {
             {isSmallWidth ? <CSVGModified marginTop={325} marginLeft={-140}/> : <CSVGModified marginLeft={-225} marginTop={isSmallHeight ? -106 : -97}/> }
           </div>
         </div>
-      </footer>
+      </motion.footer>
+      </AnimatePresence>
     </div>
   );
   

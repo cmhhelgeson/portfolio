@@ -22,6 +22,7 @@ export type ProjectContentParams = {
     linkInfo?: LinkInfo,
     bold?: boolean
     htmlElements?: JSX.Element
+    contentTopPadding?: string,
 }
 
 export type ProjectNumberParams = Omit<ProjectContentParams, "text" | "titleText">
@@ -63,13 +64,16 @@ export const ProjectContent = ({
     projectFontSpacing,
     linkInfo,
     bold,
-    htmlElements
+    htmlElements,
+    contentTopPadding,
   }: ProjectContentParams) => {
 
     //const separatedText = text.split("$cmh");
 
+    console.log(contentTopPadding);
+
     return (
-    <div className={styles.project_content}>
+    <div className={styles.project_content} style={{paddingTop: contentTopPadding ? contentTopPadding : "0px"}}>
     
       <ProjectNumber 
         projectNum={projectNum} 
